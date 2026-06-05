@@ -25,7 +25,7 @@ const GlossaryPage: React.FC = () => {
   useEffect(() => {
     const fetchTerms = async () => {
       try {
-        const response = await axios.get<GlossaryTerm[]>('http://localhost:5001/api/glossary');
+        const response = await axios.get<GlossaryTerm[]>('https://teorinfo-backend.onrender.com/api/glossary');
         setTerms(response.data);
         setFilteredTerms(response.data);
         

@@ -1,9 +1,8 @@
 // src/components/Register.tsx
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import '../styles/Auth.css'; 
+import '../styles/Auth.css';
 
 const Register: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -12,7 +11,7 @@ const Register: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { register } = useAuth();
 
   const handleRegister = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -20,13 +19,7 @@ const Register: React.FC = () => {
     setError(null);
 
     try {
-      const response = await axios.post<{ userId: number }>('http://localhost:5001/auth/register', { 
-        username, 
-        email, 
-        password 
-      });
-      const userId = response.data.userId; 
-      await login(email, password);
+      await register(username, email, password);
       navigate('/');
     } catch (error: any) {
       if (error.response && error.response.data) {

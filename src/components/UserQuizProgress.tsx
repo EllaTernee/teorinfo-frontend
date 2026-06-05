@@ -28,7 +28,7 @@ const UserQuizProgress: React.FC<UserQuizProgressProps> = ({ userId, courseId })
   useEffect(() => {
     const fetchQuizProgress = async () => {
       try {
-        const response = await axios.get<QuizProgress[]>(`http://localhost:5001/api/user/${userId}/quiz/progress`);
+        const response = await axios.get<QuizProgress[]>(`https://teorinfo-backend.onrender.com/api/user/${userId}/quiz/progress`);
         console.log('Прогресс викторин:', response.data);
         setQuizProgress(response.data || []);
       } catch (err) {

@@ -24,7 +24,7 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ courseId }) => {
     const fetchLeaderboard = async () => {
       try {
         // Пробуем получить данные с бэкенда
-        const response = await axios.get<LeaderboardEntry[]>(`http://localhost:5001/api/leaderboard/${courseId}`);
+        const response = await axios.get<LeaderboardEntry[]>(`https://teorinfo-backend.onrender.com/api/leaderboard/${courseId}`);
         console.log('Leaderboard data:', response.data);
         setLeaderboard(response.data);
         setLoading(false);

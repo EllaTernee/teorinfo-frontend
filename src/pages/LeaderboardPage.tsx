@@ -28,8 +28,8 @@ const LeaderboardPage: React.FC = () => {
     const fetchLeaderboard = async () => {
       try {
         const [leaderboardResponse, courseResponse] = await Promise.all([
-          axios.get<LeaderboardEntry[]>(`http://localhost:5001/api/leaderboard/${courseId}`),
-          axios.get<Course>(`http://localhost:5001/api/courses/${courseId}`)
+          axios.get<LeaderboardEntry[]>(`https://teorinfo-backend.onrender.com/api/leaderboard/${courseId}`),
+          axios.get<Course>(`https://teorinfo-backend.onrender.com/api/courses/${courseId}`)
         ]);
         setLeaderboard(leaderboardResponse.data);
         setCourse(courseResponse.data);

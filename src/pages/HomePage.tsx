@@ -62,7 +62,7 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get<Course[]>('http://localhost:5001/api/courses');
+        const response = await axios.get<Course[]>('https://teorinfo-backend.onrender.com/api/courses');
         const sortedCourses = response.data.sort((a, b) => a.title.localeCompare(b.title));
         setFeaturedCourses(sortedCourses);
       } catch (error) {
@@ -72,7 +72,7 @@ const HomePage: React.FC = () => {
 
     const fetchStats = async () => {
       try {
-        const response = await axios.get<Stats>('http://localhost:5001/api/stats');
+        const response = await axios.get<Stats>('https://teorinfo-backend.onrender.com/api/stats');
         setStats(response.data);
       } catch (error) {
         console.error('Ошибка загрузки статистики:', error);
@@ -89,7 +89,7 @@ const HomePage: React.FC = () => {
       if (!isAuthenticated || !userId) return;
       
       try {
-        const response = await axios.get(`http://localhost:5001/api/user/${userId}/lessons/progress`);
+        const response = await axios.get(`https://teorinfo-backend.onrender.com/api/user/${userId}/lessons/progress`);
         setLessonProgress(response.data || []);
       } catch (error) {
         console.error('Ошибка загрузки прогресса:', error);

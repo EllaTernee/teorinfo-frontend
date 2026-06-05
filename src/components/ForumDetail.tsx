@@ -41,11 +41,12 @@ const ForumDetail: React.FC = () => {
       fetchForum();
       fetchReplies();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [courseId, forumId]);
 
   const fetchForum = async () => {
     try {
-      const response = await axios.get<Forum>(`http://localhost:5001/api/forum/${forumId}`);
+      const response = await axios.get<Forum>(`https://teorinfo-backend.onrender.com/api/forum/${forumId}`);
       setForum(response.data);
     } catch (error) {
       console.error('Ошибка загрузки форума:', error);
@@ -54,7 +55,7 @@ const ForumDetail: React.FC = () => {
 
   const fetchReplies = async () => {
     try {
-      const response = await axios.get<Reply[]>(`http://localhost:5001/api/forum/${forumId}/replies`);
+      const response = await axios.get<Reply[]>(`https://teorinfo-backend.onrender.com/api/forum/${forumId}/replies`);
       setReplies(response.data);
     } catch (error) {
       console.error('Ошибка загрузки ответов:', error);
@@ -68,7 +69,7 @@ const ForumDetail: React.FC = () => {
     }
 
     try {
-      const response = await axios.post<Reply>(`http://localhost:5001/api/forum/${forum?.id}/reply`, {
+      const response = await axios.post<Reply>(`https://teorinfo-backend.onrender.com/api/forum/${forum?.id}/reply`, {
         content,
         userId,
         parentId,

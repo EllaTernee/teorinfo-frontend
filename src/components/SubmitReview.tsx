@@ -33,7 +33,7 @@ const SubmitReview: React.FC<SubmitReviewProps> = ({ courseId, onReviewSubmitted
     }
 
     try {
-      const response = await axios.post('http://localhost:5001/api/reviews', {
+      const response = await axios.post('https://teorinfo-backend.onrender.com/api/reviews', {
         userId,
         courseId,
         rating,

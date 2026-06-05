@@ -41,17 +41,17 @@ const CourseDetailPage: React.FC = () => {
     
     try {
       // Получаем информацию о курсе
-      const courseRes = await axios.get(`http://localhost:5001/api/courses/${courseId}`);
+      const courseRes = await axios.get(`https://teorinfo-backend.onrender.com/api/courses/${courseId}`);
       setCourse(courseRes.data);
 
       // Получаем уроки курса
-      const lessonsRes = await axios.get(`http://localhost:5001/api/courses/${courseId}/lessons`);
+      const lessonsRes = await axios.get(`https://teorinfo-backend.onrender.com/api/courses/${courseId}/lessons`);
       setLessons(lessonsRes.data);
 
       // Получаем прогресс пользователя (если авторизован)
       if (isAuthenticated && userId) {
         try {
-          const progressRes = await axios.get(`http://localhost:5001/api/user/${userId}/lessons/progress`);
+          const progressRes = await axios.get(`https://teorinfo-backend.onrender.com/api/user/${userId}/lessons/progress`);
           setProgress(progressRes.data || []);
         } catch (error) {
           console.log('Нет данных о прогрессе');
@@ -67,6 +67,7 @@ const CourseDetailPage: React.FC = () => {
 
   useEffect(() => {
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [courseId, userId, isAuthenticated, location.key]); // location.key обновляет при возврате
 
   // ИСПРАВЛЕНО: сравниваем lessonId (не lesson_id)

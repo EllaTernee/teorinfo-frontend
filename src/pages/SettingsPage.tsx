@@ -27,7 +27,7 @@ const SettingsPage: React.FC = () => {
 
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5001/api/users/${userId}`);
+        const response = await axios.get(`https://teorinfo-backend.onrender.com/api/users/${userId}`);
         setUsername(response.data.username);
         setEmail(response.data.email);
       } catch (error) {
@@ -44,7 +44,7 @@ const SettingsPage: React.FC = () => {
     setProfileMessage(null);
 
     try {
-      await axios.put(`http://localhost:5001/api/users/${userId}`, {
+      await axios.put(`https://teorinfo-backend.onrender.com/api/users/${userId}`, {
         username,
         email
       });
@@ -74,7 +74,7 @@ const SettingsPage: React.FC = () => {
     setPasswordMessage(null);
 
     try {
-      await axios.post(`http://localhost:5001/api/users/${userId}/change-password`, {
+      await axios.post(`https://teorinfo-backend.onrender.com/api/users/${userId}/change-password`, {
         currentPassword,
         newPassword
       });
@@ -96,7 +96,7 @@ const SettingsPage: React.FC = () => {
 
     setLoading(true);
     try {
-      await axios.delete(`http://localhost:5001/api/users/${userId}`);
+      await axios.delete(`https://teorinfo-backend.onrender.com/api/users/${userId}`);
       logout();
       navigate('/register');
     } catch (error: any) {

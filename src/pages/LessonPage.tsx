@@ -44,11 +44,11 @@ const LessonPage: React.FC = () => {
 
       try {
         // Получаем текущий урок
-        const lessonRes = await axios.get(`http://localhost:5001/api/lessons/${lessonId}`);
+        const lessonRes = await axios.get(`https://teorinfo-backend.onrender.com/api/lessons/${lessonId}`);
         setLesson(lessonRes.data);
 
         // Получаем все уроки курса для навигации
-        const lessonsRes = await axios.get(`http://localhost:5001/api/courses/${courseId}/lessons`);
+        const lessonsRes = await axios.get(`https://teorinfo-backend.onrender.com/api/courses/${courseId}/lessons`);
         const lessons = lessonsRes.data;
         setAllLessons(lessons);
 
@@ -61,7 +61,7 @@ const LessonPage: React.FC = () => {
         // Получаем прогресс пользователя (если авторизован)
         if (isAuthenticated && userId) {
           try {
-            const progressRes = await axios.get(`http://localhost:5001/api/user/${userId}/lessons/progress`);
+            const progressRes = await axios.get(`https://teorinfo-backend.onrender.com/api/user/${userId}/lessons/progress`);
             console.log('Прогресс пользователя:', progressRes.data);
             const lessonProgress = progressRes.data.find((p: LessonProgress) => p.lessonId === lessonId);
             setCompleted(lessonProgress?.completed || false);
@@ -99,7 +99,7 @@ const LessonPage: React.FC = () => {
         completed: true 
       });
       
-      const response = await axios.post('http://localhost:5001/api/user/lessons/progress', {
+      const response = await axios.post('https://teorinfo-backend.onrender.com/api/user/lessons/progress', {
         userId: userId,
         courseId: courseId,
         lessonId: lessonId,

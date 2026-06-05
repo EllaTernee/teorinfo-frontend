@@ -20,7 +20,7 @@ const Register: React.FC = () => {
     setError(null);
 
     try {
-      const response = await axios.post<{ userId: number }>('http://localhost:5001/auth/register', { 
+      const response = await axios.post<{ userId: number }>('https://teorinfo-backend.onrender.com/auth/register', { 
         username, 
         email, 
         password 
