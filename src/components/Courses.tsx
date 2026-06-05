@@ -29,7 +29,7 @@ const Courses: React.FC = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get<Course[]>('http://localhost:5001/api/courses');
+        const response = await axios.get<Course[]>('https://teorinfo-backend.onrender.com/api/courses');
         const sortedCourses = response.data.sort((a, b) => a.title.localeCompare(b.title));
         setCourses(sortedCourses);
         setLoadingCourses(false);
@@ -43,7 +43,7 @@ const Courses: React.FC = () => {
       if (!isAuthenticated || !userId) return;
 
       try {
-        const response = await axios.get<QuizProgress[]>(`http://localhost:5001/api/user/${userId}/quiz/progress`);
+        const response = await axios.get<QuizProgress[]>(`https://teorinfo-backend.onrender.com/api/user/${userId}/quiz/progress`);
         setQuizProgress(response.data || []);
       } catch (error) {
         console.error('Ошибка загрузки прогресса викторин:', error);

@@ -24,7 +24,7 @@ const ReviewPage: React.FC = () => {
 
   const fetchSearchResults = async (query: string) => {
     try {
-      const response = await axios.get(`http://localhost:5001/api/courses/search?search=${query}`);
+      const response = await axios.get(`https://teorinfo-backend.onrender.com/api/courses/search?search=${query}`);
       setSearchResults(response.data);
     } catch (error) {
       console.error('Ошибка поиска курсов:', error);
@@ -53,7 +53,7 @@ const ReviewPage: React.FC = () => {
     if (selectedCourse) {
       const fetchReviews = async () => {
         try {
-          const response = await axios.get(`http://localhost:5001/api/courses/${selectedCourse.id}/reviews`);
+          const response = await axios.get(`https://teorinfo-backend.onrender.com/api/courses/${selectedCourse.id}/reviews`);
           setReviews(response.data);
         } catch (error) {
           console.error('Ошибка загрузки отзывов:', error);

@@ -27,7 +27,7 @@ const CompletedQuizzes: React.FC = () => {
       }
 
       try {
-        const response = await axios.get<QuizProgress[]>(`http://localhost:5001/api/user/${userId}/quiz/progress`);
+        const response = await axios.get<QuizProgress[]>(`https://teorinfo-backend.onrender.com/api/user/${userId}/quiz/progress`);
         // Фильтруем только завершённые викторины
         const completedQuizzes = (response.data || []).filter(progress => progress.completed);
         setQuizProgress(completedQuizzes);

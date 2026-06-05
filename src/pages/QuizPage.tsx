@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Quiz from '../components/Quiz';
 import { useAuth } from '../context/AuthContext';
 import '../styles/QuizPage.css';
@@ -50,24 +50,23 @@ const QuizPage: React.FC = () => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const [finalScore, setFinalScore] = useState<number | null>(null);
+  const [, setFinalScore] = useState<number | null>(null);
   const [completed, setCompleted] = useState(false);
-  const [allLessonsCompleted, setAllLessonsCompleted] = useState(false);
+  const [, setAllLessonsCompleted] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [totalLessonsCount, setTotalLessonsCount] = useState(0);
-  const [completedLessonsCount, setCompletedLessonsCount] = useState(0);
+  const [, setTotalLessonsCount] = useState(0);
+  const [, setCompletedLessonsCount] = useState(0);
   const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
   const [courseTitle, setCourseTitle] = useState<string>('');
   const [courseNumericId, setCourseNumericId] = useState<number | null>(null);
   const [existingProgress, setExistingProgress] = useState<QuizProgress | null>(null);
   const { courseId } = useParams<{ courseId: string }>();
   const { userId, isAuthenticated } = useAuth();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCourseData = async () => {
       try {
-        const response = await axios.get<Course>(`http://localhost:5001/api/courses/${courseId}`);
+        const response = await axios.get<Course>(`https://teorinfo-backend.onrender.com/api/courses/${courseId}`);
         setCourseTitle(response.data.title);
         setCourseNumericId(response.data.numeric_id || null);
       } catch (error) {
@@ -84,7 +83,7 @@ const QuizPage: React.FC = () => {
       if (!isAuthenticated || !userId || !courseNumericId) return;
       
       try {
-        const response = await axios.get<QuizProgress[]>(`http://localhost:5001/api/user/${userId}/quiz/progress`);
+        const response = await axios.get<QuizProgress[]>(`https://teorinfo-backend.onrender.com/api/user/${userId}/quiz/progress`);
         const progress = response.data.find(p => p.quiz_id === courseNumericId);
         if (progress && progress.completed) {
           setExistingProgress(progress);
@@ -115,11 +114,11 @@ const QuizPage: React.FC = () => {
       }
 
       try {
-        const lessonsRes = await axios.get(`http://localhost:5001/api/courses/${courseId}/lessons`);
+        const lessonsRes = await axios.get(`https://teorinfo-backend.onrender.com/api/courses/${courseId}/lessons`);
         const totalLessons = lessonsRes.data.length;
         setTotalLessonsCount(totalLessons);
         
-        const progressRes = await axios.get<LessonProgress[]>(`http://localhost:5001/api/user/${userId}/lessons/progress`);
+        const progressRes = await axios.get<LessonProgress[]>(`https://teorinfo-backend.onrender.com/api/user/${userId}/lessons/progress`);
         const courseLessons = progressRes.data.filter(p => p.courseId === courseId);
         const completedLessons = courseLessons.filter(p => p.completed === true).length;
         setCompletedLessonsCount(completedLessons);
@@ -141,7 +140,7 @@ const QuizPage: React.FC = () => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get<Question[]>(`http://localhost:5001/api/quizzes/${courseId}`);
+        const response = await axios.get<Question[]>(`https://teorinfo-backend.onrender.com/api/quizzes/${courseId}`);
         setQuestions(response.data);
       } catch (error) {
         console.error('Ошибка загрузки вопросов:', error);
@@ -184,7 +183,7 @@ const QuizPage: React.FC = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:5001/api/user/quiz/progress',
+        'https://teorinfo-backend.onrender.com/api/user/quiz/progress',
         {
           userId: userId,
           quizId: courseNumericId,
@@ -219,7 +218,7 @@ const QuizPage: React.FC = () => {
     localStorage.removeItem(`quiz_answers_${courseId}`);
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get<Question[]>(`http://localhost:5001/api/quizzes/${courseId}`);
+        const response = await axios.get<Question[]>(`https://teorinfo-backend.onrender.com/api/quizzes/${courseId}`);
         setQuestions(response.data);
       } catch (error) {
         console.error('Ошибка загрузки вопросов:', error);

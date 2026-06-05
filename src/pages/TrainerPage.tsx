@@ -1,7 +1,6 @@
 // src/pages/TrainerPage.tsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useAuth } from '../context/AuthContext';
 
 interface Course {
   id: string;
@@ -27,7 +26,7 @@ interface CourseStats {
 const TrainerPage: React.FC = () => {
   const [courses, setCourses] = useState<Course[]>([]);
   const [courseStats, setCourseStats] = useState<CourseStats[]>([]);
-  const [selectedCourseId, setSelectedCourseId] = useState<string | null>(null);
+  const [, setSelectedCourseId] = useState<string | null>(null);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -35,18 +34,16 @@ const TrainerPage: React.FC = () => {
   const [showResults, setShowResults] = useState(false);
   const [loading, setLoading] = useState(true);
   const [inGame, setInGame] = useState(false);
-  const { isAuthenticated } = useAuth();
-
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get<Course[]>('http://localhost:5001/api/courses');
+        const response = await axios.get<Course[]>('https://teorinfo-backend.onrender.com/api/courses');
         setCourses(response.data);
         
         const stats: CourseStats[] = [];
         for (const course of response.data) {
           try {
-            const questionsRes = await axios.get(`http://localhost:5001/api/quizzes/${course.id}`);
+            const questionsRes = await axios.get(`https://teorinfo-backend.onrender.com/api/quizzes/${course.id}`);
             stats.push({
               courseId: course.id,
               title: course.title,
@@ -92,7 +89,7 @@ const TrainerPage: React.FC = () => {
       let allQuestions: Question[] = [];
       for (const course of courses) {
         try {
-          const response = await axios.get(`http://localhost:5001/api/quizzes/${course.id}`);
+          const response = await axios.get(`https://teorinfo-backend.onrender.com/api/quizzes/${course.id}`);
           allQuestions = [...allQuestions, ...response.data];
         } catch (error) {
           console.error('Ошибка:', error);
@@ -113,7 +110,7 @@ const TrainerPage: React.FC = () => {
   const loadQuestionsForCourse = async (courseId: string) => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:5001/api/quizzes/${courseId}`);
+      const response = await axios.get(`https://teorinfo-backend.onrender.com/api/quizzes/${courseId}`);
       const shuffled = shuffleArray(response.data);
       const randomQuestions = shuffled.slice(0, 5);
       setQuestions(randomQuestions);

@@ -33,9 +33,9 @@ const AchievementsPage: React.FC = () => {
   const fetchData = async () => {
     try {
       const [achievementsRes, userAchievementsRes] = await Promise.all([
-        axios.get<Achievement[]>('http://localhost:5001/api/achievements'),
+        axios.get<Achievement[]>('https://teorinfo-backend.onrender.com/api/achievements'),
         isAuthenticated && userId 
-          ? axios.get<UserAchievement[]>(`http://localhost:5001/api/user/${userId}/achievements`)
+          ? axios.get<UserAchievement[]>(`https://teorinfo-backend.onrender.com/api/user/${userId}/achievements`)
           : Promise.resolve({ data: [] })
       ]);
       setAchievements(achievementsRes.data);
@@ -64,17 +64,19 @@ const AchievementsPage: React.FC = () => {
 
   useEffect(() => {
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId, isAuthenticated]);
 
   // Периодически проверяем новые достижения (каждые 5 секунд)
   useEffect(() => {
     if (!isAuthenticated) return;
-    
+
     const interval = setInterval(() => {
       fetchData();
     }, 5000);
-    
+
     return () => clearInterval(interval);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated]);
 
   if (loading) {
@@ -132,15 +134,14 @@ const AchievementsPage: React.FC = () => {
   );
   
   // ============================================
-  // ВСЕ КУРСЫ ВМЕСТЕ
-  // ============================================
-  const allCourseAchievements = [
-    ...infoTheoryAchievements,
-    ...codingAchievements,
-    ...algoAchievements,
-    ...formalAchievements
-  ];
-  
+  // ВСЕ КУРСЫ ВМЕСТЕ (не используется напрямую, но сохраняем для возможного будущего использования)
+  // const allCourseAchievements = [
+  //   ...infoTheoryAchievements,
+  //   ...codingAchievements,
+  //   ...algoAchievements,
+  //   ...formalAchievements
+  // ];
+
   // Скрытые достижения
   const hiddenAchievements = achievements.filter(a => a.isHidden);
 

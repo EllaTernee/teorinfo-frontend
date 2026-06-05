@@ -96,27 +96,28 @@ const AdminCoursesPage: React.FC = () => {
       return;
     }
     fetchAllData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [role, selectedCourseId]);
 
   const fetchAllData = async () => {
     setLoading(true);
     try {
       const [coursesRes] = await Promise.all([
-        axios.get('http://localhost:5001/api/courses'),
+        axios.get('https://teorinfo-backend.onrender.com/api/courses'),
       ]);
       const sortedCourses = coursesRes.data.sort((a: Course, b: Course) => a.title.localeCompare(b.title));
       setCourses(sortedCourses);
       
       if (selectedCourseId) {
         try {
-          const lessonsRes = await axios.get(`http://localhost:5001/api/courses/${selectedCourseId}/lessons`);
+          const lessonsRes = await axios.get(`https://teorinfo-backend.onrender.com/api/courses/${selectedCourseId}/lessons`);
           setLessons(lessonsRes.data);
         } catch (error) {
           setLessons([]);
         }
         
         try {
-          const questionsRes = await axios.get(`http://localhost:5001/api/quizzes/${selectedCourseId}`);
+          const questionsRes = await axios.get(`https://teorinfo-backend.onrender.com/api/quizzes/${selectedCourseId}`);
           setQuestions(questionsRes.data);
         } catch (error) {
           setQuestions([]);
@@ -124,8 +125,8 @@ const AdminCoursesPage: React.FC = () => {
       }
       
       const [glossaryRes, achievementsRes] = await Promise.all([
-        axios.get('http://localhost:5001/api/glossary'),
-        axios.get('http://localhost:5001/api/achievements', {
+        axios.get('https://teorinfo-backend.onrender.com/api/glossary'),
+        axios.get('https://teorinfo-backend.onrender.com/api/achievements', {
           headers: { Authorization: `Bearer ${token}` }
         }),
       ]);
@@ -143,11 +144,11 @@ const AdminCoursesPage: React.FC = () => {
     e.preventDefault();
     try {
       if (editingCourse) {
-        await axios.put(`http://localhost:5001/api/admin/courses/${editingCourse.id}`, courseForm, {
+        await axios.put(`https://teorinfo-backend.onrender.com/api/admin/courses/${editingCourse.id}`, courseForm, {
           headers: { Authorization: `Bearer ${token}` }
         });
       } else {
-        await axios.post('http://localhost:5001/api/admin/courses', courseForm, {
+        await axios.post('https://teorinfo-backend.onrender.com/api/admin/courses', courseForm, {
           headers: { Authorization: `Bearer ${token}` }
         });
       }
@@ -164,7 +165,7 @@ const AdminCoursesPage: React.FC = () => {
   const handleDeleteCourse = async (courseId: string) => {
     if (!window.confirm('Удалить курс? Это удалит все связанные уроки и вопросы.')) return;
     try {
-      await axios.delete(`http://localhost:5001/api/admin/courses/${courseId}`, {
+      await axios.delete(`https://teorinfo-backend.onrender.com/api/admin/courses/${courseId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (selectedCourseId === courseId) setSelectedCourseId('');
@@ -181,11 +182,11 @@ const AdminCoursesPage: React.FC = () => {
     if (!selectedCourseId) return;
     try {
       if (editingLesson) {
-        await axios.put(`http://localhost:5001/api/admin/lessons/${editingLesson.id}`, { ...lessonForm, courseId: selectedCourseId }, {
+        await axios.put(`https://teorinfo-backend.onrender.com/api/admin/lessons/${editingLesson.id}`, { ...lessonForm, courseId: selectedCourseId }, {
           headers: { Authorization: `Bearer ${token}` }
         });
       } else {
-        await axios.post('http://localhost:5001/api/admin/lessons', { ...lessonForm, courseId: selectedCourseId }, {
+        await axios.post('https://teorinfo-backend.onrender.com/api/admin/lessons', { ...lessonForm, courseId: selectedCourseId }, {
           headers: { Authorization: `Bearer ${token}` }
         });
       }
@@ -202,7 +203,7 @@ const AdminCoursesPage: React.FC = () => {
   const handleDeleteLesson = async (lessonId: string) => {
     if (!window.confirm('Удалить урок?')) return;
     try {
-      await axios.delete(`http://localhost:5001/api/admin/lessons/${lessonId}`, {
+      await axios.delete(`https://teorinfo-backend.onrender.com/api/admin/lessons/${lessonId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchAllData();
@@ -219,11 +220,11 @@ const AdminCoursesPage: React.FC = () => {
     try {
       const data = { ...questionForm, courseId: selectedCourseId };
       if (editingQuestion) {
-        await axios.put(`http://localhost:5001/api/admin/questions/${editingQuestion.id}`, data, {
+        await axios.put(`https://teorinfo-backend.onrender.com/api/admin/questions/${editingQuestion.id}`, data, {
           headers: { Authorization: `Bearer ${token}` }
         });
       } else {
-        await axios.post('http://localhost:5001/api/admin/questions', data, {
+        await axios.post('https://teorinfo-backend.onrender.com/api/admin/questions', data, {
           headers: { Authorization: `Bearer ${token}` }
         });
       }
@@ -240,7 +241,7 @@ const AdminCoursesPage: React.FC = () => {
   const handleDeleteQuestion = async (questionId: number) => {
     if (!window.confirm('Удалить вопрос?')) return;
     try {
-      await axios.delete(`http://localhost:5001/api/admin/questions/${questionId}`, {
+      await axios.delete(`https://teorinfo-backend.onrender.com/api/admin/questions/${questionId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchAllData();
@@ -255,11 +256,11 @@ const AdminCoursesPage: React.FC = () => {
     e.preventDefault();
     try {
       if (editingGlossary) {
-        await axios.put(`http://localhost:5001/api/admin/glossary/${editingGlossary.id}`, glossaryForm, {
+        await axios.put(`https://teorinfo-backend.onrender.com/api/admin/glossary/${editingGlossary.id}`, glossaryForm, {
           headers: { Authorization: `Bearer ${token}` }
         });
       } else {
-        await axios.post('http://localhost:5001/api/admin/glossary', glossaryForm, {
+        await axios.post('https://teorinfo-backend.onrender.com/api/admin/glossary', glossaryForm, {
           headers: { Authorization: `Bearer ${token}` }
         });
       }
@@ -276,7 +277,7 @@ const AdminCoursesPage: React.FC = () => {
   const handleDeleteGlossary = async (termId: number) => {
     if (!window.confirm('Удалить термин?')) return;
     try {
-      await axios.delete(`http://localhost:5001/api/admin/glossary/${termId}`, {
+      await axios.delete(`https://teorinfo-backend.onrender.com/api/admin/glossary/${termId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchAllData();
@@ -291,11 +292,11 @@ const AdminCoursesPage: React.FC = () => {
     e.preventDefault();
     try {
       if (editingAchievement) {
-        await axios.put(`http://localhost:5001/api/admin/achievements/${editingAchievement.id}`, achievementForm, {
+        await axios.put(`https://teorinfo-backend.onrender.com/api/admin/achievements/${editingAchievement.id}`, achievementForm, {
           headers: { Authorization: `Bearer ${token}` }
         });
       } else {
-        await axios.post('http://localhost:5001/api/admin/achievements', achievementForm, {
+        await axios.post('https://teorinfo-backend.onrender.com/api/admin/achievements', achievementForm, {
           headers: { Authorization: `Bearer ${token}` }
         });
       }
@@ -321,7 +322,7 @@ const AdminCoursesPage: React.FC = () => {
   const handleDeleteAchievement = async (achievementId: string) => {
     if (!window.confirm('Удалить достижение?')) return;
     try {
-      await axios.delete(`http://localhost:5001/api/admin/achievements/${achievementId}`, {
+      await axios.delete(`https://teorinfo-backend.onrender.com/api/admin/achievements/${achievementId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchAllData();

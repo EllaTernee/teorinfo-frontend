@@ -108,7 +108,7 @@ const ProfilePage: React.FC = () => {
   const [recentQuizzes, setRecentQuizzes] = useState<(QuizProgress & { courseTitle?: string })[]>([]);
   const [recentLessons, setRecentLessons] = useState<LessonProgress[]>([]);
   const [lessonTitles, setLessonTitles] = useState<Map<string, string>>(new Map());
-  const [courseTitles, setCourseTitles] = useState<Map<number, string>>(new Map());
+  const [, setCourseTitles] = useState<Map<number, string>>(new Map());
   const [userAchievements, setUserAchievements] = useState<UserAchievement[]>([]);
   const [allAchievements, setAllAchievements] = useState<Achievement[]>([]);
   const [loading, setLoading] = useState(true);
@@ -138,14 +138,14 @@ const ProfilePage: React.FC = () => {
 
     const fetchProfileData = async () => {
       try {
-        const userRes = await axios.get(`http://localhost:5001/api/users/${userId}`);
+        const userRes = await axios.get(`https://teorinfo-backend.onrender.com/api/users/${userId}`);
         
         let lessonsXp = 0;
         let quizzesXp = 0;
         let totalXp = 0;
         
         try {
-          const xpRes = await axios.get<UserXpResponse>(`http://localhost:5001/api/user/${userId}/xp`);
+          const xpRes = await axios.get<UserXpResponse>(`https://teorinfo-backend.onrender.com/api/user/${userId}/xp`);
           lessonsXp = xpRes.data.lessonsXp || 0;
           quizzesXp = xpRes.data.quizzesXp || 0;
           totalXp = xpRes.data.totalXp || 0;
@@ -153,7 +153,7 @@ const ProfilePage: React.FC = () => {
           console.warn('XP data not available, calculating from progress');
         }
         
-        const coursesRes = await axios.get<Course[]>('http://localhost:5001/api/courses');
+        const coursesRes = await axios.get<Course[]>('https://teorinfo-backend.onrender.com/api/courses');
         const courseMap = new Map<number, string>();
         const numericIdMap: { [key: string]: number } = {
           'information-coding': 1,
@@ -172,7 +172,7 @@ const ProfilePage: React.FC = () => {
         
         let allLessons: Lesson[] = [];
         for (const course of coursesRes.data) {
-          const lessonsRes = await axios.get(`http://localhost:5001/api/courses/${course.id}/lessons`);
+          const lessonsRes = await axios.get(`https://teorinfo-backend.onrender.com/api/courses/${course.id}/lessons`);
           allLessons = [...allLessons, ...lessonsRes.data];
         }
         const lessonMap = new Map<string, string>();
@@ -181,7 +181,7 @@ const ProfilePage: React.FC = () => {
         });
         setLessonTitles(lessonMap);
         
-        const lessonsRes = await axios.get<LessonProgress[]>(`http://localhost:5001/api/user/${userId}/lessons/progress`);
+        const lessonsRes = await axios.get<LessonProgress[]>(`https://teorinfo-backend.onrender.com/api/user/${userId}/lessons/progress`);
         const completedLessons = lessonsRes.data.filter(l => l.completed === true);
         
         if (totalXp === 0 && completedLessons.length > 0) {
@@ -190,7 +190,7 @@ const ProfilePage: React.FC = () => {
           }, 0);
         }
         
-        const quizzesRes = await axios.get<QuizProgress[]>(`http://localhost:5001/api/user/${userId}/quiz/progress`);
+        const quizzesRes = await axios.get<QuizProgress[]>(`https://teorinfo-backend.onrender.com/api/user/${userId}/quiz/progress`);
         const completedQuizzes = quizzesRes.data.filter(q => q.completed === true);
         
         let quizzesTotalScore = 0;
@@ -246,10 +246,10 @@ const ProfilePage: React.FC = () => {
         // Загружаем достижения пользователя
         try {
           const [achievementsRes, userAchievementsRes] = await Promise.all([
-            axios.get<Achievement[]>('http://localhost:5001/api/achievements', {
+            axios.get<Achievement[]>('https://teorinfo-backend.onrender.com/api/achievements', {
               headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             }),
-            axios.get<UserAchievement[]>(`http://localhost:5001/api/user/${userId}/achievements`, {
+            axios.get<UserAchievement[]>(`https://teorinfo-backend.onrender.com/api/user/${userId}/achievements`, {
               headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             })
           ]);
