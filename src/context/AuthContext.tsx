@@ -24,6 +24,9 @@ const setAuthToken = (token: string | null) => {
   }
 };
 
+// Базовый URL бэкенда
+const API_BASE_URL = 'https://teorinfo-backend.onrender.com';
+
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [userId, setUserId] = useState<number | null>(null);
@@ -51,8 +54,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const login = async (email: string, password: string) => {
     try {
-      const response = await axios.post<{ message: string; userId: number; token: string; role: string; user: { id: number; username: string; email: string; role: string } }>(
-        'http://localhost:5001/api/login',
+      const response = await axios.post<{ 
+        message: string; 
+        userId: number; 
+        token: string; 
+        role: string; 
+        user: { id: number; username: string; email: string; role: string } 
+      }>(
+        `${API_BASE_URL}/api/login`,
         { email, password }
       );
       
@@ -90,8 +99,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const register = async (username: string, email: string, password: string) => {
     try {
-      const response = await axios.post<{ message: string; userId: number; token: string; role: string; user: { id: number; username: string; email: string; role: string } }>(
-        'http://localhost:5001/auth/register',
+      const response = await axios.post<{ 
+        message: string; 
+        userId: number; 
+        token: string; 
+        role: string; 
+        user: { id: number; username: string; email: string; role: string } 
+      }>(
+        `${API_BASE_URL}/auth/register`,
         { username, email, password }
       );
       
