@@ -1,0 +1,311 @@
+/* src/styles/Leaderboard.css */
+
+.leaderboard-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: 100vh;
+  background: var(--bg-primary, #f8f9fa);
+}
+
+.leaderboard-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* ===== КНОПКА "НАЗАД К КУРСАМ" ===== */
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #ffffff !important;
+  padding: 12px 28px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin: 0 auto 25px auto;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  width: fit-content;
+  box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
+}
+
+.back-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+  gap: 14px;
+  color: #ffffff !important;
+}
+
+.back-button:active {
+  transform: translateY(0);
+}
+
+[data-theme="dark"] .back-button {
+  background: linear-gradient(135deg, #0f3460, #1a1a2e);
+}
+
+[data-theme="dark"] .back-button:hover {
+  background: linear-gradient(135deg, #1a1a2e, #0f3460);
+  box-shadow: 0 8px 20px rgba(100, 108, 255, 0.3);
+}
+
+.leaderboard-header h1 {
+  font-size: 2rem;
+  color: var(--text-primary, #333);
+  margin-bottom: 8px;
+}
+
+.leaderboard-header h2 {
+  font-size: 1.2rem;
+  color: var(--text-secondary, #666);
+  font-weight: 500;
+}
+
+/* Подиум - обязательно flex row */
+.podium {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: flex-end !important;
+  gap: 20px !important;
+  margin-bottom: 50px !important;
+  padding: 20px 0 !important;
+}
+
+.podium-item {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  background: white !important;
+  border-radius: 20px !important;
+  padding: 20px 15px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid #e0e0e0 !important;
+}
+
+.podium-item.first {
+  background: linear-gradient(135deg, #ffd70020, #ffed4e10) !important;
+  border-color: #ffd700 !important;
+  transform: scale(1.02) !important;
+}
+
+.podium-item.second {
+  background: linear-gradient(135deg, #c0c0c020, #e8e8e810) !important;
+  border-color: #c0c0c0 !important;
+}
+
+.podium-item.third {
+  background: linear-gradient(135deg, #cd7f3220, #f0a94e10) !important;
+  border-color: #cd7f32 !important;
+}
+
+.podium-crown {
+  font-size: 2rem !important;
+  margin-bottom: 5px !important;
+}
+
+.podium-medal {
+  font-size: 2rem !important;
+  margin-bottom: 10px !important;
+}
+
+.podium-score {
+  font-size: 1.3rem !important;
+  font-weight: 700 !important;
+  color: #333 !important;
+  margin-bottom: 8px !important;
+}
+
+.podium-name {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: #333 !important;
+  margin-bottom: 5px !important;
+}
+
+.podium-place {
+  font-size: 0.85rem !important;
+  color: #666 !important;
+}
+
+.podium-height {
+  width: 10px;
+  margin-top: 15px;
+}
+
+/* Таблица */
+.leaderboard-table {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+  margin-top: 30px;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 80px 1fr 100px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 15px 20px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 100px;
+  padding: 12px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  background: white;
+}
+
+.table-row:hover {
+  background: #f5f5f5;
+}
+
+.col-rank {
+  text-align: center;
+  font-weight: 600;
+  color: #667eea;
+}
+
+.col-user {
+  padding-left: 10px;
+  color: #333;
+  font-weight: 500;
+}
+
+.col-score {
+  text-align: center;
+  font-weight: 600;
+  color: #667eea;
+}
+
+/* Пустое состояние */
+.empty-leaderboard {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.empty-leaderboard p {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.empty-leaderboard p:first-child {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* Тёмная тема */
+[data-theme="dark"] .leaderboard-page {
+  background: #1a1a2e;
+}
+
+[data-theme="dark"] .leaderboard-header h1 {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .leaderboard-header h2 {
+  color: #a0a0a0;
+}
+
+[data-theme="dark"] .podium-item {
+  background: #0f3460;
+  border-color: #1a1a3e;
+}
+
+[data-theme="dark"] .podium-score,
+[data-theme="dark"] .podium-name,
+[data-theme="dark"] .podium-place {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .leaderboard-table {
+  background: #0f3460;
+  border-color: #1a1a3e;
+}
+
+[data-theme="dark"] .table-row {
+  background: #0f3460;
+  border-bottom-color: #2a2a4a;
+}
+
+[data-theme="dark"] .table-row:hover {
+  background: #1a1a3e;
+}
+
+[data-theme="dark"] .col-rank,
+[data-theme="dark"] .col-score {
+  color: #a0c4ff;
+}
+
+[data-theme="dark"] .col-user {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .empty-leaderboard {
+  background: #0f3460;
+}
+
+[data-theme="dark"] .empty-leaderboard p {
+  color: #a0a0a0;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+  .podium {
+    gap: 10px !important;
+  }
+  
+  .podium-item {
+    padding: 15px 10px !important;
+  }
+  
+  .podium-score {
+    font-size: 1rem !important;
+  }
+  
+  .podium-name {
+    font-size: 0.8rem !important;
+  }
+  
+  .podium-medal {
+    font-size: 1.5rem !important;
+  }
+  
+  .table-header,
+  .table-row {
+    grid-template-columns: 60px 1fr 80px;
+    padding: 10px 15px;
+    font-size: 0.85rem;
+  }
+  
+  .leaderboard-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .back-button {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+}
+/* ФИКС - БЕЛЫЙ ТЕКСТ НА КНОПКЕ */
+.back-button {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #667eea, #764ba2) !important;
+}

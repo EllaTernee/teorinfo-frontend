@@ -1,0 +1,411 @@
+/* src/styles/TrainerPage.css */
+
+.trainer-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 40px 20px;
+}
+
+.trainer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Hero секция */
+.trainer-hero {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 30px;
+  padding: 40px 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.2);
+}
+
+.trainer-icon {
+  font-size: 60px;
+  margin-bottom: 16px;
+}
+
+.trainer-hero h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.trainer-hero p {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.trainer-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+/* Случайный раунд */
+.random-section {
+  margin-bottom: 40px;
+}
+
+.random-card {
+  background: white;
+  border-radius: 24px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.random-icon {
+  font-size: 48px;
+  background: #f8f9fa;
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.random-info {
+  flex: 1;
+}
+
+.random-info h3 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.random-info p {
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.random-hint {
+  font-size: 0.85rem;
+  color: #999;
+  margin-top: 8px;
+}
+
+.start-random-button {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 40px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.start-random-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);
+}
+
+/* Курсы */
+.courses-section {
+  margin-top: 30px;
+}
+
+.courses-section h3 {
+  color: white;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.courses-grid-trainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.course-trainer-card {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  text-align: center;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.course-trainer-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.course-trainer-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.course-trainer-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.course-trainer-stats {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 16px;
+}
+
+.select-course-button {
+  background: #f0f0f0;
+  color: #667eea;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.select-course-button:hover {
+  background: #667eea;
+  color: white;
+}
+
+/* Игровой режим */
+.trainer-game {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 30px;
+  padding: 30px;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.exit-button {
+  background: #f0f0f0;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.exit-button:hover {
+  background: #e0e0e0;
+}
+
+.game-progress {
+  flex: 1;
+  max-width: 300px;
+}
+
+.progress-bar {
+  background: #e0e0e0;
+  border-radius: 10px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  height: 100%;
+  transition: width 0.3s;
+}
+
+.game-progress span {
+  font-size: 0.75rem;
+  color: #666;
+  margin-top: 5px;
+  display: block;
+  text-align: center;
+}
+
+.game-question h2 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 30px;
+  line-height: 1.4;
+}
+
+.game-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.game-option {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 14px 20px;
+  text-align: left;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.game-option:hover {
+  background: #667eea;
+  border-color: #667eea;
+  color: white;
+  transform: translateX(5px);
+}
+
+/* Результаты */
+.trainer-results {
+  max-width: 500px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 30px;
+  padding: 40px;
+  text-align: center;
+}
+
+.trainer-results h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.result-score {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.result-score.passed {
+  color: #22c55e;
+}
+
+.result-score.failed {
+  color: #ef4444;
+}
+
+.result-message {
+  font-size: 1rem;
+  margin-bottom: 30px;
+  color: #666;
+}
+
+.restart-button {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.restart-button:hover {
+  transform: translateY(-2px);
+}
+
+/* Тёмная тема */
+[data-theme="dark"] .trainer-hero,
+[data-theme="dark"] .random-card,
+[data-theme="dark"] .course-trainer-card,
+[data-theme="dark"] .trainer-game,
+[data-theme="dark"] .trainer-results {
+  background: #0f3460;
+}
+
+[data-theme="dark"] .trainer-hero h1,
+[data-theme="dark"] .random-info h3,
+[data-theme="dark"] .course-trainer-title {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .trainer-hero p,
+[data-theme="dark"] .random-info p,
+[data-theme="dark"] .random-hint,
+[data-theme="dark"] .course-trainer-stats {
+  color: #a0a0a0;
+}
+
+[data-theme="dark"] .game-question h2 {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .game-option {
+  background: #1a1a2e;
+  border-color: #2a2a4a;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .game-option:hover {
+  background: #667eea;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .trainer-container {
+    padding: 0;
+  }
+  
+  .trainer-hero {
+    padding: 30px 20px;
+  }
+  
+  .trainer-hero h1 {
+    font-size: 1.5rem;
+  }
+  
+  .random-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 25px;
+  }
+  
+  .start-random-button {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .courses-grid-trainer {
+    grid-template-columns: 1fr;
+  }
+  
+  .game-header {
+    flex-direction: column;
+  }
+  
+  .game-progress {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .trainer-results {
+    padding: 30px 20px;
+  }
+  
+  .result-score {
+    font-size: 2.5rem;
+  }
+}

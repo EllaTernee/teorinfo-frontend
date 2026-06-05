@@ -1,0 +1,102 @@
+# ============================================
+# DEPENDENCIES
+# ============================================
+/node_modules
+/node_modules/
+/.pnp
+.pnp.js
+.pnp.js
+.pnp.loader.mjs
+
+# ============================================
+# BUILD & DIST
+# ============================================
+/build
+/dist
+/build/
+/dist/
+*.tsbuildinfo
+
+# ============================================
+# ENVIRONMENT VARIABLES
+# ============================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.development
+.env.production
+.env.test
+
+# ============================================
+# LOGS
+# ============================================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ============================================
+# SYSTEM FILES (macOS)
+# ============================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+*.swp
+*.swo
+*~
+
+# ============================================
+# SYSTEM FILES (Windows)
+# ============================================
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ============================================
+# IDE & EDITORS
+# ============================================
+.vscode/
+.idea/
+*.sublime-*
+.project
+.classpath
+.settings/
+*.iml
+
+# ============================================
+# TEMPORARY FILES
+# ============================================
+*.tmp
+*.temp
+*.cache
+.cache/
+.parcel-cache/
+
+# ============================================
+# TESTING
+# ============================================
+/coverage
+/.nyc_output
+
+# ============================================
+# MISC
+# ============================================
+*.pid
+*.seed
+*.pid.lock
+.direnv/
+*.local
+
+# ============================================
+# REACT SPECIFIC
+# ============================================
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+service-worker.js
+*.map

@@ -1,0 +1,436 @@
+/* src/styles/LessonPage.css */
+
+.lesson-page {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding: 40px 20px;
+}
+
+.lesson-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 40px;
+}
+
+/* Навигация */
+.lesson-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e9ecef;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.nav-button {
+  padding: 8px 16px;
+  background: none;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  color: #495057;
+}
+
+.nav-button:hover {
+  background-color: #f8f9fa;
+  border-color: #667eea;
+  color: #667eea;
+}
+
+.lesson-counter {
+  font-size: 14px;
+  color: #6c757d;
+  background: #f8f9fa;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+/* Заголовок */
+.lesson-container h1 {
+  font-size: 2rem;
+  margin-bottom: 24px;
+  color: #333;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Содержание урока */
+.lesson-content {
+  line-height: 1.8;
+  color: #444;
+}
+
+.lesson-content h2 {
+  font-size: 1.5rem;
+  margin: 32px 0 16px;
+  color: #333;
+  font-weight: 600;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #667eea;
+}
+
+.lesson-content h3 {
+  font-size: 1.25rem;
+  margin: 24px 0 12px;
+  color: #555;
+  font-weight: 600;
+}
+
+.lesson-content p {
+  margin-bottom: 16px;
+  font-size: 1rem;
+}
+
+.lesson-content ul,
+.lesson-content ol {
+  margin: 16px 0;
+  padding-left: 24px;
+}
+
+.lesson-content li {
+  margin-bottom: 8px;
+}
+
+.lesson-content strong {
+  color: #667eea;
+  font-weight: 600;
+}
+
+.lesson-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.lesson-content th,
+.lesson-content td {
+  border: 1px solid #dee2e6;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.lesson-content th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+.lesson-content code {
+  background-color: #f1f3f5;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+/* ✅ Сообщение о получении XP */
+.xp-earned {
+  background: linear-gradient(135deg, #f5a623 0%, #f7d94e 100%);
+  color: #2d2d2d;
+  padding: 15px 25px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin: 20px 0;
+  animation: fadeInUp 0.4s ease;
+  box-shadow: 0 4px 15px rgba(245, 166, 35, 0.4);
+}
+
+/* Анимация для XP сообщения */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Кнопка отметки пройденным */
+.mark-completed-button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 32px 0 20px;
+  transition: all 0.3s ease;
+}
+
+.mark-completed-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+}
+
+/* Бейдж пройденного урока */
+.completed-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px;
+  background: #f0fdf4;
+  border-radius: 12px;
+  margin: 32px 0 20px;
+  color: #166534;
+  font-weight: 500;
+}
+
+.completed-badge .checkmark {
+  font-size: 24px;
+}
+
+/* Следующий урок */
+.next-lesson {
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.next-lesson p {
+  margin-bottom: 12px;
+  color: #0369a1;
+}
+
+.next-lesson-button {
+  padding: 10px 24px;
+  background: #0284c7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.next-lesson-button:hover {
+  background: #0369a1;
+  transform: translateX(5px);
+}
+
+/* Кнопка возврата к курсу */
+.back-to-course {
+  width: 100%;
+  padding: 12px;
+  background: none;
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #6c757d;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.back-to-course:hover {
+  background-color: #f8f9fa;
+  border-color: #667eea;
+  color: #667eea;
+}
+
+/* Загрузка и ошибки */
+.loading-spinner {
+  text-align: center;
+  padding: 60px;
+  color: #6c757d;
+  font-size: 16px;
+}
+
+.error-message {
+  text-align: center;
+  padding: 40px;
+  color: #dc2626;
+  font-size: 18px;
+}
+
+/* ============================================
+   ТЁМНАЯ ТЕМА
+   ============================================ */
+
+[data-theme="dark"] .lesson-page {
+  background-color: #1a1a2e;
+}
+
+[data-theme="dark"] .lesson-container {
+  background-color: #0f3460;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .lesson-container h1 {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .lesson-content {
+  color: #c0c0c0;
+}
+
+[data-theme="dark"] .lesson-content h2 {
+  color: #e0e0e0;
+  border-bottom-color: #667eea;
+}
+
+[data-theme="dark"] .lesson-content h3 {
+  color: #c0c0c0;
+}
+
+[data-theme="dark"] .lesson-content th,
+[data-theme="dark"] .lesson-content td {
+  border-color: #2a2a4a;
+}
+
+[data-theme="dark"] .lesson-content th {
+  background-color: #1a1a2e;
+}
+
+[data-theme="dark"] .lesson-content code {
+  background-color: #1a1a2e;
+  color: #a0c4ff;
+}
+
+[data-theme="dark"] .lesson-navigation {
+  border-bottom-color: #2a2a4a;
+}
+
+[data-theme="dark"] .nav-button {
+  border-color: #2a2a4a;
+  color: #a0a0a0;
+}
+
+[data-theme="dark"] .nav-button:hover {
+  background-color: #1a1a2e;
+  border-color: #667eea;
+}
+
+[data-theme="dark"] .lesson-counter {
+  background-color: #1a1a2e;
+  color: #a0a0a0;
+}
+
+/* ✅ Тёмная тема для XP сообщения */
+[data-theme="dark"] .xp-earned {
+  background: linear-gradient(135deg, #f5a623 0%, #f7d94e 100%);
+  color: #2d2d2d;
+  box-shadow: 0 4px 15px rgba(245, 166, 35, 0.5);
+}
+
+[data-theme="dark"] .completed-badge {
+  background-color: #1a3a2a;
+  color: #86efac;
+}
+
+[data-theme="dark"] .next-lesson {
+  background-color: #1a2a3a;
+  border-color: #2a4a6a;
+}
+
+[data-theme="dark"] .next-lesson p {
+  color: #7abff7;
+}
+
+[data-theme="dark"] .back-to-course {
+  border-color: #2a2a4a;
+  color: #a0a0a0;
+}
+
+[data-theme="dark"] .back-to-course:hover {
+  background-color: #1a1a2e;
+  border-color: #667eea;
+}
+
+/* ============================================
+   АДАПТИВНОСТЬ
+   ============================================ */
+
+@media (max-width: 768px) {
+  .lesson-page {
+    padding: 20px 15px;
+  }
+
+  .lesson-container {
+    padding: 24px 20px;
+  }
+
+  .lesson-container h1 {
+    font-size: 1.5rem;
+  }
+
+  .lesson-content h2 {
+    font-size: 1.3rem;
+  }
+
+  .lesson-content h3 {
+    font-size: 1.1rem;
+  }
+  
+  /* ✅ Адаптив для XP сообщения */
+  .xp-earned {
+    font-size: 1.1rem;
+    padding: 12px 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .lesson-navigation {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-button {
+    text-align: center;
+  }
+
+  .lesson-counter {
+    text-align: center;
+  }
+
+  .mark-completed-button,
+  .next-lesson-button,
+  .back-to-course {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .lesson-content p,
+  .lesson-content li {
+    font-size: 14px;
+  }
+  
+  /* ✅ Адаптив для XP сообщения */
+  .xp-earned {
+    font-size: 1rem;
+    padding: 10px 16px;
+  }
+}
+
+/* Анимация появления для контейнера */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lesson-container {
+  animation: fadeIn 0.4s ease-out;
+}

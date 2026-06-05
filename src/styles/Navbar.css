@@ -1,0 +1,364 @@
+/* src/styles/Navbar.css */
+
+/* Базовые переменные */
+:root {
+  --navbar-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --navbar-hover: rgba(255, 255, 255, 0.2);
+  --navbar-text: white;
+  --theme-toggle-bg: rgba(255, 255, 255, 0.2);
+  --dropdown-bg: #ffffff;
+  --dropdown-text: #333333;
+  --dropdown-hover: #f5f5f5;
+  --dropdown-border: #e0e0e0;
+}
+
+[data-theme="dark"] {
+  --navbar-bg: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+  --navbar-hover: rgba(255, 255, 255, 0.15);
+  --navbar-text: #e0e0e0;
+  --theme-toggle-bg: rgba(255, 255, 255, 0.15);
+  --dropdown-bg: #1e1e2e;
+  --dropdown-text: #e0e0e0;
+  --dropdown-hover: #2d2d3d;
+  --dropdown-border: #2a2a3e;
+}
+
+/* Основная навигация */
+nav {
+  background: var(--navbar-bg);
+  transition: all 0.3s ease;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Контейнер */
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 70px;
+  gap: 20px;
+}
+
+/* Логотип */
+.nav-logo {
+  flex-shrink: 0;
+}
+
+.nav-logo a {
+  color: var(--navbar-text);
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: opacity 0.3s;
+}
+
+.nav-logo a:hover {
+  opacity: 0.85;
+}
+
+/* Меню */
+.nav-menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-menu li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li a,
+.nav-menu li button {
+  display: block;
+  color: var(--navbar-text);
+  text-align: center;
+  padding: 10px 16px;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  border-radius: 30px;
+  white-space: nowrap;
+}
+
+.nav-menu li a:hover,
+.nav-menu li button:hover {
+  background-color: var(--navbar-hover);
+  transform: translateY(-2px);
+}
+
+/* Стили для недоступных ссылок (гость) */
+.disabled-link {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.disabled-link:hover {
+  opacity: 1;
+  background-color: var(--navbar-hover);
+}
+
+/* Правая группа */
+.nav-right {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Кнопка темы */
+.theme-toggle {
+  background: var(--theme-toggle-bg);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05) rotate(15deg);
+}
+
+/* ===== ВЫПАДАЮЩЕЕ МЕНЮ ===== */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-trigger {
+  background: none !important;
+  border: none;
+  color: var(--navbar-text);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.dropdown-trigger:hover {
+  background-color: var(--navbar-hover) !important;
+  transform: translateY(-2px);
+}
+
+/* Выпадающее меню - ЖЁСТКО ПО ЛЕВОМУ КРАЮ НА ВСЕХ ЭКРАНАХ */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0 !important;
+  right: auto !important;
+  background: var(--dropdown-bg);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 100;
+  border: 1px solid var(--dropdown-border);
+  overflow: hidden;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Стили для пунктов выпадающего меню - ТЕКСТ ПО ЛЕВОМУ КРАЮ */
+.dropdown-menu a,
+.dropdown-menu button {
+  display: block;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: var(--dropdown-text) !important;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left !important;
+  justify-content: flex-start !important;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu button:hover {
+  background: var(--dropdown-hover) !important;
+  color: var(--dropdown-text) !important;
+  transform: none;
+}
+
+/* Стиль для кнопки выхода */
+.dropdown-logout {
+  color: #ef4444 !important;
+  border-top: 1px solid var(--dropdown-border);
+}
+
+.dropdown-logout:hover {
+  background: rgba(239, 68, 68, 0.1) !important;
+  color: #ef4444 !important;
+}
+
+/* Адаптивность для планшетов */
+@media (max-width: 1100px) {
+  .nav-menu li a,
+  .nav-menu li button,
+  .dropdown-trigger {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .nav-logo a {
+    font-size: 1.3rem;
+  }
+  
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+  
+  .nav-container {
+    padding: 0 16px;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav-container {
+    flex-wrap: wrap;
+    padding: 12px 16px;
+    gap: 12px;
+  }
+  
+  .nav-logo {
+    flex: 1;
+  }
+  
+  .nav-menu {
+    order: 3;
+    flex-basis: 100%;
+    justify-content: center;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  
+  .nav-right {
+    order: 2;
+  }
+  
+  .dropdown-menu {
+    left: 0 !important;
+    right: auto !important;
+    transform: none !important;
+    min-width: 200px;
+  }
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 650px) {
+  .nav-menu {
+    gap: 4px;
+  }
+  
+  .nav-menu li a,
+  .nav-menu li button,
+  .dropdown-trigger {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+  
+  .nav-logo a {
+    font-size: 1.1rem;
+  }
+  
+  .theme-toggle {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+  
+  .dropdown-menu {
+    min-width: 180px;
+  }
+  
+  .dropdown-menu a,
+  .dropdown-menu button {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 10px 12px;
+  }
+  
+  .nav-menu li a,
+  .nav-menu li button,
+  .dropdown-trigger {
+    padding: 4px 8px;
+    font-size: 0.7rem;
+  }
+  
+  .nav-logo a {
+    font-size: 1rem;
+  }
+  
+  .dropdown-menu {
+    min-width: 160px;
+  }
+  
+  .dropdown-menu a,
+  .dropdown-menu button {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Анимация */
+nav {
+  animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

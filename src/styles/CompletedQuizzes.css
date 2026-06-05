@@ -1,0 +1,44 @@
+/* src/styles/CompletedQuizzes.css */
+
+.completed-quizzes {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .completed-quizzes h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .completed-quiz {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .completed-quiz h3 {
+    margin: 0 0 10px;
+    color: #007bff;
+    font-size: 1.2em;
+  }
+  
+  .completed-quiz p {
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  .completed-quiz .completed {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .completed-quiz .not-completed {
+    color: red;
+    font-weight: bold;
+  }
+  

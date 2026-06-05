@@ -1,0 +1,251 @@
+/* src/styles/Courses.css */
+
+body {
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.courses-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Список курсов — вертикально */
+.courses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Карточка курса */
+.course-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border: 1px solid #e9ecef;
+}
+
+.course-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.course-card-content {
+  padding: 24px;
+}
+
+/* Заголовок курса */
+.course-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+/* Описание курса — по левому краю */
+.course-description {
+  color: #6c757d;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Кнопки — горизонтально, одинакового размера */
+.course-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+/* Блок с тестом (кнопка + статус) */
+.test-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  border-radius: 25px;
+  overflow: hidden;
+  min-width: 160px;
+}
+
+.test-status .view-quizzes-button {
+  border-radius: 25px 0 0 25px;
+  min-width: 120px;
+  margin: 0;
+}
+
+.test-status .test-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.test-status .test-badge.completed {
+  background: #22c55e;
+  color: white;
+}
+
+.test-status .test-badge.not-completed {
+  background: #f59e0b;
+  color: white;
+}
+
+/* Кнопка "Таблица лидеров" */
+.leaderboard-link {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-align: center;
+  background: #f8f9fa;
+  color: #667eea;
+  border: 1px solid #e9ecef;
+  min-width: 160px;
+}
+
+.leaderboard-link:hover {
+  background: #e9ecef;
+  transform: translateY(-2px);
+}
+
+/* Кнопка "Форум обсуждения" */
+.forum-link {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-align: center;
+  background: #f8f9fa;
+  color: #764ba2;
+  border: 1px solid #e9ecef;
+  min-width: 160px;
+}
+
+.forum-link:hover {
+  background: #e9ecef;
+  transform: translateY(-2px);
+}
+
+/* Ссылка "Подробнее" */
+.more-info-link {
+  display: inline-block;
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  margin-top: 5px;
+}
+
+.more-info-link:hover {
+  transform: translateX(5px);
+  color: #5a67d8;
+}
+
+/* Прогресс викторин */
+.quiz-progress {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #e9ecef;
+  font-size: 0.8rem;
+  color: #ff9800;
+}
+
+.quiz-progress p {
+  margin: 5px 0;
+}
+
+/* ============================================
+   ТЁМНАЯ ТЕМА
+   ============================================ */
+[data-theme="dark"] .courses-container {
+  background-color: #1a1a2e;
+}
+
+[data-theme="dark"] .course-card {
+  background: #0f3460;
+  border-color: #1a1a3e;
+}
+
+[data-theme="dark"] .course-title {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .course-description {
+  color: #a0a0a0;
+}
+
+[data-theme="dark"] .view-quizzes-button {
+  background: linear-gradient(135deg, #5a67d8, #6b46a0);
+}
+
+[data-theme="dark"] .test-status .test-badge.completed {
+  background: #16a34a;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .test-status .test-badge.not-completed {
+  background: #d97706;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .leaderboard-link,
+[data-theme="dark"] .forum-link {
+  background: #1a1a2e;
+  border-color: #2a2a4a;
+  color: #a0c4ff;
+}
+
+[data-theme="dark"] .leaderboard-link:hover,
+[data-theme="dark"] .forum-link:hover {
+  background: #16213e;
+}
+
+[data-theme="dark"] .quiz-progress {
+  border-top-color: #2a2a4a;
+}
+
+/* ============================================
+   АДАПТИВНОСТЬ
+   ============================================ */
+@media (max-width: 768px) {
+  .courses-container {
+    padding: 20px 15px;
+  }
+  
+  .course-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .test-status {
+    width: 100%;
+  }
+  
+  .test-status .view-quizzes-button {
+    flex: 1;
+  }
+  
+  .leaderboard-link,
+  .forum-link {
+    width: 100%;
+    text-align: center;
+  }
+}

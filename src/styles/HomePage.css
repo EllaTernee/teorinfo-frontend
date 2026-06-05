@@ -1,0 +1,46 @@
+/* src/styles/HomePage.css */
+
+/* Этот файл нужен для импорта, но основные стили уже в App.css */
+/* Дополнительные специфичные стили для главной страницы */
+
+.homepage {
+  min-height: 100vh;
+}
+
+/* Адаптив для главной страницы */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 450px;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .hero-stats {
+    gap: 20px;
+  }
+  
+  .stat-number {
+    font-size: 1.3rem;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.6rem;
+  }
+  
+  .hero-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}

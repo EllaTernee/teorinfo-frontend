@@ -1,0 +1,47 @@
+/* src/styles/UserQuizProgress.css */
+
+.user-quiz-progress {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  
+  .user-quiz-progress h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #333333;
+  }
+  
+  .user-quiz-progress ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .user-quiz-progress li {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .user-quiz-progress li p {
+    margin: 5px 0;
+  }
+  
+  .user-quiz-progress .course-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .user-quiz-progress .quiz-details {
+    color: #666666;
+  }
+  
+  .user-quiz-progress .quiz-details span {
+    font-weight: bold;
+    color: #333333;
+  }
+  

@@ -1,0 +1,61 @@
+.review-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-input {
+    width: 60%;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .search-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .search-results {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .course-link {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .course-link:hover {
+    text-decoration: underline;
+  }
+  
+  .back-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .back-link:hover {
+    text-decoration: underline;
+  }
+  

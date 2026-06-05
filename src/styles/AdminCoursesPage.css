@@ -1,0 +1,666 @@
+/* src/styles/AdminCoursesPage.css */
+
+.admin-courses {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.admin-header h1 {
+  font-size: 2rem;
+  color: var(--text-primary);
+}
+
+.btn-add {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn-add:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(34, 197, 94, 0.3);
+}
+
+/* Табы */
+.admin-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all 0.3s;
+  border-radius: 30px;
+}
+
+.tab:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.tab.active {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+/* Формы редактирования */
+.edit-form {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 30px;
+  border: 1px solid var(--border-color);
+}
+
+.edit-form h3 {
+  margin-bottom: 20px;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+}
+
+.edit-form input,
+.edit-form textarea,
+.edit-form select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.edit-form input:focus,
+.edit-form textarea:focus,
+.edit-form select:focus {
+  outline: none;
+  border-color: var(--gradient-start);
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+.edit-form label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  color: var(--text-primary);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  margin: 10px 0;
+  color: var(--text-primary);
+}
+
+.course-form {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 30px;
+  border: 1px solid var(--border-color);
+}
+
+.course-form h2 {
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.course-form .form-group {
+  margin-bottom: 15px;
+}
+
+.course-form .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.course-form .form-group input,
+.course-form .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn-save {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-save:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+}
+
+.btn-cancel {
+  padding: 10px 20px;
+  background: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-cancel:hover {
+  background: #5a6268;
+}
+
+/* Селектор курса */
+.course-selector {
+  margin-bottom: 20px;
+  padding: 15px 20px;
+  background: var(--bg-secondary);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.course-selector label {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.course-selector select {
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-width: 200px;
+  cursor: pointer;
+}
+
+/* Карточки для курсов */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.admin-card {
+  display: flex;
+  gap: 15px;
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s;
+  align-items: center;
+}
+
+.admin-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.card-icon {
+  font-size: 48px;
+}
+
+.card-info {
+  flex: 1;
+}
+
+.card-info h4 {
+  margin: 0 0 5px;
+  color: var(--text-primary);
+}
+
+.card-id {
+  font-size: 11px;
+  color: var(--text-light);
+  margin: 0 0 5px;
+}
+
+.card-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Список уроков */
+.lessons-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.lesson-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+}
+
+.lesson-order {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.lesson-info {
+  flex: 1;
+}
+
+.lesson-title {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.lesson-id {
+  font-size: 11px;
+  color: var(--text-light);
+}
+
+.lesson-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Список вопросов */
+.questions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.question-item {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+}
+
+.question-text {
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.question-answer {
+  font-size: 13px;
+  color: #22c55e;
+  margin-bottom: 8px;
+}
+
+.question-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* Глоссарий */
+.glossary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.glossary-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.glossary-term {
+  font-weight: 700;
+  color: var(--gradient-start);
+  margin-bottom: 8px;
+}
+
+.glossary-def {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.glossary-cat {
+  font-size: 10px;
+  color: var(--text-light);
+  background: var(--bg-secondary);
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+/* Достижения */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.achievement-card {
+  display: flex;
+  gap: 12px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.achievement-card.hidden {
+  opacity: 0.7;
+  background: var(--bg-secondary);
+}
+
+.achievement-icon {
+  font-size: 40px;
+}
+
+.achievement-info {
+  flex: 1;
+}
+
+.achievement-title {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.achievement-desc {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin: 4px 0;
+}
+
+.achievement-req {
+  font-size: 10px;
+  color: var(--text-light);
+}
+
+.achievement-points {
+  font-size: 11px;
+  color: #ffd700;
+}
+
+/* Таблицы данных */
+.data-table {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+th {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  font-weight: 600;
+}
+
+tr:hover {
+  background: var(--bg-secondary);
+}
+
+.desc-cell {
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Кнопки действий */
+.btn-edit, .btn-delete, .btn-select {
+  padding: 5px 10px;
+  margin: 0 3px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s;
+}
+
+.btn-edit {
+  background: #ffc107;
+  color: #333;
+}
+
+.btn-edit:hover {
+  background: #e0a800;
+  transform: scale(1.05);
+}
+
+.btn-delete {
+  background: #dc2626;
+  color: white;
+}
+
+.btn-delete:hover {
+  background: #b91c1c;
+  transform: scale(1.05);
+}
+
+.btn-select {
+  background: #17a2b8;
+  color: white;
+  margin-left: 5px;
+}
+
+.btn-select:hover {
+  background: #138496;
+  transform: scale(1.05);
+}
+
+/* Тёмная тема */
+[data-theme="dark"] .edit-form input,
+[data-theme="dark"] .edit-form textarea,
+[data-theme="dark"] .edit-form select,
+[data-theme="dark"] .course-form input,
+[data-theme="dark"] .course-form textarea {
+  background: #1a1a2e;
+  border-color: #2a2a4a;
+}
+
+[data-theme="dark"] tr:hover {
+  background: #1a1a3e;
+}
+
+[data-theme="dark"] .admin-card {
+  background: #0f3460;
+}
+
+[data-theme="dark"] .lesson-item {
+  background: #0f3460;
+}
+
+[data-theme="dark"] .question-item {
+  background: #0f3460;
+}
+
+[data-theme="dark"] .glossary-card {
+  background: #0f3460;
+}
+
+[data-theme="dark"] .achievement-card {
+  background: #0f3460;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .admin-courses {
+    padding: 20px 15px;
+  }
+
+  .admin-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  th, td {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+  
+  .desc-cell {
+    max-width: 150px;
+  }
+  
+  .admin-tabs {
+    justify-content: center;
+  }
+  
+  .tab {
+    padding: 6px 14px;
+    font-size: 0.85rem;
+  }
+  
+  .course-selector {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .course-selector select {
+    width: 100%;
+  }
+  
+  .cards-grid,
+  .glossary-grid,
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .lesson-item {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-edit, .btn-delete, .btn-select {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+  
+  .edit-form {
+    padding: 16px;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .btn-save, .btn-cancel {
+    width: 100%;
+  }
+  
+  .admin-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .card-actions {
+    justify-content: center;
+  }
+}
+.icons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.icon-option {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.icon-option:hover {
+  transform: scale(1.05);
+  background: var(--gradient-start);
+  border-color: var(--gradient-start);
+}
+
+.icon-option.selected {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-color: #667eea;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(102,126,234,0.4);
+}
